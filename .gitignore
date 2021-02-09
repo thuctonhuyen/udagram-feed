@@ -43,3 +43,6 @@ venv/
 
 # Env:
 env
+env-configmap.yaml
+env-secret.yaml
+aws-secret.yaml
