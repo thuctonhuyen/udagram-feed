@@ -28,6 +28,8 @@ export function requireAuth(req: Request, res: Response, next: NextFunction) {
 
 // Get all feed items
 router.get('/', async (req: Request, res: Response) => {
+  console.log(`${req.method} REQUEST FOR ${req.originalUrl}`);
+
   const items = await FeedItem.findAndCountAll({order: [['id', 'DESC']]});
   items.rows.map((item) => {
     if (item.url) {
@@ -40,6 +42,8 @@ router.get('/', async (req: Request, res: Response) => {
 // Get a feed resource
 router.get('/:id',
     async (req: Request, res: Response) => {
+      console.log(`${req.method} REQUEST FOR ${req.originalUrl}`);
+      
       const {id} = req.params;
       const item = await FeedItem.findByPk(id);
       res.send(item);
